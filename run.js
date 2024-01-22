@@ -8,6 +8,7 @@ var dt = require('./toolkit_box');
 app.use(express.static(__dirname + '/static'));
 app.set('view engine', 'html');
 
+// configuring nunjucks module (similar to jinja)
 nunjucks.configure('templates', {
     autoescape: true,
     express: app
