@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js"></script>
+  <title>GPA/CGPA calculator</title>
+</head>
+<body onload="this_year()" onmouseover="this_year()">
+  <!-- dew -->
+  <div class="dew">
+    <span class="dew_span">
+      <div class="dew_authentic">
+        <div class="dew_cntr">
+          <div class="dew_circle"></div>
+          <small class="dew_scan">
+            loading
+            <br>
+            . . .
+          </small>
+          <div class="dew_pointer_cntr">
+            <span class="dew_pointer">.</span>
+          </div>
+          <div class="dew_gradient_circle"></div>
+        </div>
+      </div>
+    </span>
+  </div>
+
+  <!-- container -->
+  <div class="container">
+    <div class="header">
+      <h1><a onclick="main()">GPA/CGPA</a></h1>
+      <div>
+        <a  onclick="guide()" class="h_link_sm">Guide</a>
+        <a  onclick="guide()" class="h_link">Guide</a>
+        <a href="https://usmanmusa1920.github.io" class="h_link">Developer</a>
+      </div>
+    </div>
+    
+    <span class="main">
+      <!-- start -->
+      <div class="form" id="start">
+        <div class="form_in">
+          <div class="start">
+            <h1><a>GPA/CGPA</a></h1>
+            <p>Student GPA/CGPA calculator</p>
+          </div>
+          <br>
+          <p>{{welcome}}</p>
+          <br>
+          <br>
+          <button type="button" onclick="start_func()">START</button>
+        </div>
+      </div>
+
+      <!-- hidden values container -->
+      <div class="form" id="data_store">
+        <div class="form_in">
+          <input type="text" class="GPA_CGPA" value="" placeholder="GPA/CGPA">
+          <input type="text" class="grade_points" value="5" placeholder="Grade points">
+        </div>
+      </div>
+
+      <!-- gpa or cgpa -->
+      <div class="form" id="cgpa_or_gpa_div">
+        <div class="form_in">
+          <h1>GPA/CGPA CALCULATOR</h1>
+          <br>
+          <p>Select what you want to calculate</p>
+          <br>
+          <button type="button" class="gpa" onclick="gpa_or_cgpa('GPA')">GPA</button>
+          <br>
+          <button type="button" class="cgpa" onclick="gpa_or_cgpa('CGPA')">CGPA</button>
+        </div>
+      </div>
+
+      <!-- grade points -->
+      <div class="form" id="grade_point_div">
+        <div class="form_in">
+          <h1><span class="calc_cat"></span> CALCULATOR</h1>
+          <br>
+          <p>Select the grading system of your institution.</p>
+          <br>
+          <button type="submit" onclick="grade_point(5)">5 POINTS</button>
+          <br>
+          <button type="submit" onclick="grade_point(4)">4 POINTS</button>
+        </div>
+      </div>
+
+      <!-- number of courses, CGPA, and credit units -->
+      <div class="form" id="get_no_courses">
+        <div class="form_in">
+          <h1><span class="calc_cat"></span> CALCULATOR</h1>
+          <br>
+          <input type="number" class="num_courses" value="" placeholder="Number of courses you offered" min="1">
+          <input type="number" class="curr_cgpa" value="" placeholder="Your current CGPA e.g 3.19" min="1">
+          <input type="number" class="curr_credits" value="" placeholder="Current credit units you completed" min="1">
+          <br>
+          <button type="submit" onclick="course_range()">PROCEED</button>
+          <br>
+          <button type="submit" class="restart_btn" onclick="restart()">RE-START</button>
+          <br>
+        </div>
+      </div>
+
+      <!-- course-code, credit-unit, and grade for each of the courses -->
+      <div class="form" id="calc_div">
+        <div class="form_in">
+          <h1><span class="calc_cat"></span> CALCULATOR</h1>
+          <p>Write each course code, select credit unit, and grade:</p>
+          <div id="co">
+            <div class="course_head">
+              <p class="one">Course code</p>
+              <p>Credit unit</p>
+              <p>Grade</p>
+            </div>
+            <!-- appended courses input fields goes here! -->
+          </div>
+          <br>
+          <p>Your result will be calculated once you click calculate.</p>
+          <br>
+          <button type="submit" onclick="calc()">CALCULATE</button>
+          <br>
+          <button type="submit" class="restart_btn" onclick="restart()">RE-START</button>
+        </div>
+      </div>
+
+      <!-- result -->
+      <div class="form" id="result_div">
+        <div class="form_in">
+          <div class="back_img">
+            <img src="favicon.ico" alt="logo">
+          </div>
+          <span class="result_span">
+            <h1>Your <span class="calc_cat"></span> result</h1>
+            <br>
+            <p>Total credit units registered: <b><span id="registered_credit_units"></span></b></p>
+            <p>Total weighted grade point: <b><span id="weighted_grade_point"></span></b></p>
+            <p>Your <span class="calc_cat"></span>: <b><span id="result_value"></span></b></p>
+            <p>Classification: <b><span id="certificate"></span></b></p>
+            <br>
+            <button type="submit" class="restart_btn" onclick="restart()">RE-START</button>
+          </span>
+        </div>
+      </div>
+    </span>
+
+    <!-- guide -->
+    <span class="guide">
+      <div class="form" id="start">
+        <div class="form_in">
+          <div class="start">
+            <h1><a>I GUIDE YOU!</a></h1>
+            <p>GPA/CGPA Calculator</p>
+          </div>
+          <br>
+          <p class="normal_txt">The GPA/CGPA Calculator is a valuable tool for every student seeking to monitor their academic performance accurately. Understanding how to calculate your CGPA manually is crucial, but utilizing the CGPA calculator streamlines the process and provides you with instant results. Make the most of this convenient tool to track your progress, set goals, and stay motivated on your journey toward academic success at the university.</p>
+          <br>
+        </div>
+      </div>
+    
+      <div class="form" id="start">
+        <div class="form_in">
+          <div class="start">
+            <center>
+              <h2>Understanding The Difference Between GP, CGP & CGPA</h2>
+            </center>
+          </div>
+          <br>
+          <p class="normal_txt">Grades, Grade Point Average (GPA), and Cumulative Grade Point Average (CGPA) are all related to academic performance and are commonly used in educational institutions to assess a student's achievements. However, there are distinct differences between these terms. Let's explore each one:</p>
+          <p class="normal_txt"><b>Grades</b>: Grades are individual assessments given for each course or subject based on the student's performance. Grades are typically represented by letters such as A, B, C, D, E, and F (or similar variations), and they indicate the level of achievement or proficiency in that specific course. Grades can also be assigned numerical values, known as Grade Points (GP), to calculate GPA and CGPA.</p>
+          <p class="normal_txt"><b>Grade Point Average (GPA)</b>: GPA is a measure of a student's overall academic performance for a specific period, such as a semester or academic year. It is calculated by assigning numerical values (Grade Points) to the grades obtained in each course and then averaging those values. GPA provides an overview of a student's performance during a specific timeframe and helps determine academic standing or honors. GPA is typically calculated on a scale of `0.00 to 5.00` or `0.00 to 4.00`, although it may vary depending on the grading system used by the institution, but most institution in Nigeria uses `0.00 to 5.00`.</p>
+          <p class="normal_txt"><b>Cumulative Grade Point Average (CGPA)</b>: CGPA represents the cumulative or overall academic performance of a student throughout their entire academic program or a specific period, such as their entire undergraduate degree. It takes into account the grades obtained in all courses completed over multiple semesters or academic years. CGPA is calculated by summing up the Grade Points earned in all courses and dividing that sum by the total number of credit hours or credit units completed. CGPA provides a comprehensive measure of a student's academic achievements and is often used for evaluating eligibility for graduation, honors, or academic recognition.</p>
+          <p class="normal_txt">In summary, GP refers to the numerical values assigned to individual grades, GPA represents the average performance for a specific period, and CGPA reflects the cumulative average of grades earned over an entire academic program. Understanding these distinctions is important for students to track their progress accurately and for institutions to evaluate academic performance consistently.</p>
+          <br>
+        </div>
+      </div>
+    
+      <div class="form" id="start">
+        <div class="form_in">
+          <div class="start">
+            <center>
+              <h2>Calculating CGPA for 5 grading system</h2>
+            </center>
+          </div>
+          <br>
+          <p class="normal_txt">To calculate your CGPA for 5 grading system, you need to follow these steps:</p>
+          <li>
+            <b>1.</b> Assign Grade Points: Each grade corresponds to a specific Grade Point (GP). The table below shows the grading system and the corresponding GP values:
+          </li>
+          <pre>
+    
+    Grade	 Grade   Point	Percentage
+    A      5.00    70-100
+    B      4.00    60-69.99
+    C      3.00    50-59.99
+    D      2.00    45-49.99
+    E      1.00    40-44.99
+    F      0.00    0-39.99
+          </pre>
+          <li>
+            <b>2.</b> Calculate Grade Points: Multiply the GP value for each course by the credit units assigned to that course. For example, if you received a grade of B (4.00 GP) in a course with 3 credit units, the grade points earned for that course would be 4.00 x 3 = 12.00.
+          </li>
+          <li>
+            <b>3.</b> Sum of Grade Points: Add up the grade points earned for all the courses you have completed.
+          </li>
+          <li>
+            <b>4.</b> Total Credit Units: Calculate the total credit units earned by summing up the credit units for all the courses completed.
+          </li>
+          <li>
+            <b>5.</b> Calculate CGPA: Divide the sum of grade points by the total credit units earned. The result is your CGPA.
+          </li>
+          <br>
+        </div>
+      </div>
+    
+      <div class="form" id="start">
+        <div class="form_in">
+          <div class="start">
+            <center>
+              <h2>Introducing the GPA/CGPA Calculator</h2>
+            </center>
+          </div>
+          <br>
+          <p class="normal_txt">Calculating your CGPA manually can be time-consuming and prone to errors. To simplify the process, we have developed the GPA/CGPA Calculator, an online tool that automates the calculation for you.</p>
+          <p class="normal_txt">The GPA/CGPA Calculator is a user-friendly tool that allows you to input your grades and credit units for each course. It performs the necessary calculations instantly, providing you with an accurate CGPA.</p>
+          <br>
+        </div>
+      </div>
+    
+      <div class="form" id="start">
+        <div class="form_in">
+          <div class="start">
+            <center>
+              <h2>Benefits of the GPA/CGPA Calculator</h2>
+            </center>
+          </div>
+          <br>
+          <li>
+            <b>1.</b> Time-saving: The CGPA calculator eliminates the need for manual calculations, saving you valuable time and effort. With just a few clicks, you can obtain your CGPA instantly.
+          </li>
+          <li>
+            <b>2.</b> Accuracy: By automating the calculation process, the CGPA calculator reduces the risk of calculation errors. You can rely on the accuracy of the results it provides.
+          </li>
+          <li>
+            <b>3.</b> Planning and Goal Setting: With easy access to your CGPA, you can plan your future academic goals more effectively. The calculator helps you determine the grades you need in upcoming courses to achieve your desired CGPA.
+          </li>
+          <li>
+            <b>4.</b> Progress Tracking: The CGPA calculator enables you to track your academic progress over time. By regularly inputting your grades, you can monitor your performance and make necessary adjustments to improve your CGPA.
+          </li>
+          <br>
+        </div>
+      </div>
+    </span>
+
+    <!-- foot -->
+    <div class="foot">
+      <h1><a onclick="main()">GPA/CGPA</a></h1>
+      <br>
+      <br>
+      <div class="foot_div">
+        <p>GPA/CGPA calculator for students!</p>
+        <br>
+        <br>
+        <a onclick="guide()" class="f_guide">Guide</a>
+        <a onclick="main()" class="f_main">Main</a>
+        <br>
+        <a href="https://usmanmusa1920.github.io">Developer</a>
+        <br>
+        <br>
+        <p>All rights reserved &copy; <span id="this_year"></span></p>
+      </div>
+      <br>
+    </div>
+  </div>
+</body>
+</html>

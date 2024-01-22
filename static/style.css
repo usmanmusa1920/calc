@@ -1,0 +1,527 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --navy-col: rgb(3, 3, 60);
+  --bg-col: rgb(82, 9, 42);
+  --bg-pade-col: rgb(146, 47, 91);
+  --txt-shadow: rgb(50, 50, 63);
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img,
+ins, kbd, q, samp, small, strong, sub, sup, var,
+b, i, dl, dt, dd, ol, ul, li, fieldset, form, label,
+legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video{
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+a{
+  cursor: pointer;
+}
+
+body{
+  background-color: lightgray;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 15px;
+  font-family: "Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans", Times 'Segoe UI', Tahoma, Verdana, sans-serif, serif,Verdana,Arial,sans-serif;
+}
+
+.dew{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: none;
+  z-index: 30;
+  opacity: 100%;
+  justify-content: center;
+  align-items: center;
+  animation-name: dew_anim;
+  animation-duration: 1.0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+@keyframes dew_anim{
+  from{
+    background-color: var(--bg-pade-col)
+  }
+  to{
+    background-color: var(--bg-pade-col)
+  }
+}
+
+.dew_span{
+  border-radius: 50%;
+  padding: 50px;
+  position: absolute;
+  background: transparent;
+}
+
+.dew_authentic{
+  width: 150px;
+  min-height: 150px;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 0 2px var(--txt-shadow), 1px 1px 2px black, 0 0 5px var(--txt-shadow);
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+  animation-name: dew_authentic_animation;
+  animation-duration: 1.0s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+@keyframes dew_authentic_animation{
+  from{
+    background-color: var(--bg-col)
+  }
+  to{
+    background-color: var(--bg-pade-col)
+  }
+}
+
+.dew_cntr{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  position: relative;
+  transform: scale(1);
+}
+
+.dew_circle{
+  background-color: #010f1c;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.dew_scan{
+  color: white;
+  text-align: center;
+}
+
+.dew_pointer_cntr{
+  position: absolute;
+  background: black;
+  top: -40px;
+  left: 50px;
+  width: 2px;
+  height: 90px;
+  transform-origin: bottom center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: dew_rotate;
+  animation-duration: 1.0s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: forwards;
+}
+@keyframes dew_rotate{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.dew_pointer{
+  background: #fff;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  color: dodgerblue;
+  justify-content: center;
+  align-items: center;
+}
+
+.dew_gradient_circle{
+  height: 120px;
+  width: 120px;
+  z-index: -2;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  border: dotted black 3px;
+}
+
+.container{
+  width: 100%;
+}
+
+.header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  background-color: var(--bg-col);
+}
+
+@media only screen and (max-width: 700px){
+  .header{
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .header{
+    padding: 15px;
+  }
+}
+
+.header h1 a{
+  color: white;
+  text-decoration: none;
+  font-size: xx-large;
+  font-style: oblique;
+  text-shadow: 0px 3px 2px var(--bg-col), 1px 3px 2px white, 0px 0px 5px var(--bg-col);
+}
+
+@media only screen and (max-width: 700px){
+  .header h1 a{
+    font-size: large;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .header h1 a{
+    font-size: large;
+  }
+}
+
+.header div{
+  display: flex;
+  align-items: center;
+}
+
+.h_link, .h_link_sm{
+  color: white;
+  font-size: 18px;
+  margin-left: 10px;
+  border-bottom: dotted 1px white;
+  text-decoration: none;
+}
+
+.h_link_sm{
+  display: none;
+}
+
+@media only screen and (max-width: 700px){
+  .h_link{
+    display: none;
+  }
+
+  .h_link_sm{
+    display: block;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .h_link{
+    display: none;
+  }
+
+  .h_link_sm{
+    display: block;
+    font-size: 20px;
+  }
+}
+
+.form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-pade-col);
+}
+
+.form_in{
+  width: 40%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 40px;
+  margin: 30px 0;
+  padding: 30px 10px;
+  overflow: hidden;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 700px){
+  .form_in{
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .form_in{
+    width: 90%;
+  }
+}
+
+.start{
+  width: 100%;
+  padding: 50px 100px;
+  color: white;
+  background-color: var(--bg-col);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+@media only screen and (max-width: 700px){
+  .start{
+    padding: 20px;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .start{
+    padding: 20px;
+    align-items: center;
+  }
+}
+
+.start h1{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start h1 a{
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  border-bottom: dashed 1px white;
+}
+
+@media only screen and (max-width: 700px){
+  .start h1 a{
+    font-size: large;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .start h1 a{
+    font-size: large;
+  }
+}
+
+.form_in p{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.form_in h1{
+  text-align: center;
+  border-radius: 20px;
+  padding: 5px 20px;
+  color: var(--bg-col);
+  font-size: xx-large;
+  font-style: oblique;
+  box-shadow: 0 0px 7px var(--navy-col), 0 0px 7px var(--navy-col);
+  text-shadow: 0px 3px 2px var(--bg-col), 1px 3px 2px white, 0px 0px 5px var(--bg-col);
+}
+
+@media only screen and (max-width: 700px){
+  .form_in h1{
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .form_in h1{
+    width: 90%;
+  }
+}
+
+#co{
+  width: 100%;
+}
+
+.course_head, .course{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.course_head .one, .course .code{
+  width: 50%;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+  outline: none;
+}
+
+.course_head p, .course select{
+  width: 20%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.num_courses, .curr_cgpa, .curr_credits, .course select, .course .code{
+  border-top: solid lightgrey 3px;
+  border-bottom: solid lightgrey 3px;
+}
+
+.course_head p, .course_head .one{
+  text-align: center;
+  font-weight: bolder;
+  font-size: larger;
+  border-top: solid lightgrey 3px;
+  border-bottom: solid lightgrey 3px;
+  margin-bottom: 10px;
+}
+
+.GPA_CGPA, .grade_points, .num_courses, .curr_cgpa, .curr_credits{
+  width: 70%;
+  height: 33px;
+  padding: 0 10px;
+  margin: 8px 0;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  border-top: solid lightgrey 3px;
+  border-bottom: solid lightgrey 3px;
+  background: white;
+}
+
+@media only screen and (max-width: 700px){
+  .GPA_CGPA, .grade_points, .num_courses, .curr_cgpa, .curr_credits{
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .GPA_CGPA, .grade_points, .num_courses, .curr_cgpa, .curr_credits{
+    width: 90%;
+  }
+}
+
+#cgpa_or_gpa_div, #data_store, #grade_point_div, #get_no_courses, #calc_div, #result_div, .guide, .f_main{
+  display: none;
+}
+
+#result_div{
+  position: relative;
+}
+
+.back_img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back_img img{
+  width: 100px;
+  height: 100px;
+  filter: opacity(20%);
+  align-self: center;
+}
+
+.result_span{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form_in button{
+  background: var(--bg-col);
+  color: white;
+  padding: 10px 0;
+  width: 50%;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 0px 7px white, 0 0px 7px white;
+}
+
+.form_in .restart_btn{
+  background: red;
+}
+
+.foot{
+  width: 100%;
+  padding: 50px 150px;
+  color: white;
+  background-color: var(--bg-col);
+}
+
+@media only screen and (max-width: 700px){
+  .foot{
+    padding: 10px 20px;
+  }
+}
+
+@media only screen and (max-width: 1050px){
+  .foot{
+    padding: 10px 20px;
+  }
+}
+
+.foot h1{
+  text-align: center;
+  border-radius: 20px;
+  padding: 5px 20px;
+  color: var(--bg-col);
+  font-size: xx-large;
+  font-style: oblique;
+  box-shadow: 0 0px 7px var(--navy-col), 0 0px 7px var(--navy-col);
+  text-shadow: 0px 3px 2px var(--bg-col), 1px 3px 2px white, 0px 0px 5px var(--bg-col);
+}
+
+.foot h1 a{
+  color: white;
+  text-decoration: none;
+  border-bottom: dashed 1px white;
+}
+
+.foot_div{
+  text-align: center;
+  border-radius: 20px;
+  padding: 7px 15px;
+  font-size: xx-large;
+  font-style: oblique;
+  box-shadow: 0 0px 7px var(--navy-col), 0 0px 7px var(--navy-col);
+  text-shadow: 0px 3px 2px var(--bg-col), 1px 3px 2px white, 0px 0px 5px var(--bg-col);
+}
+
+.foot a{
+  color: white;
+  border-bottom: dotted 1px white;
+  text-decoration: none;
+}
+
+.normal_txt{
+  text-align: left !important;
+}
