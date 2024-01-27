@@ -266,6 +266,9 @@ function calc(){
             }
             else if (result_value >= 0 && result_value <= 0.99){
                 certificate = 'Failed';
+            }
+            else{
+                certificate = `Un-believable ${is_cgpa} result: ${result_value}`;
             };
         }
         // for 4 points grading system
@@ -287,6 +290,9 @@ function calc(){
             // }
             else if (result_value >= 0 && result_value <= 0.99){
                 certificate = 'Failed';
+            }
+            else{
+                certificate = `Un-believable ${is_cgpa} result: ${result_value}`;
             };
         };
 
